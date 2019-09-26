@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<title>Word Guess</title>
+</head>
+<body> 
+    <h1>Welcome to Word Guess Game!</h1>
+    <p>We are going to guess name of DJs.</p>
+    <p>Please press any letter to start the game.</p>
+    <p id="dj-name"></p>
+    <p id="guess-chances"></p>
+    <p id="wins"></p>
+    <p id="losses"></p>
+    <p id="player-guess"></p>
+    
+    <script style="text/javascript">
+    
+    var guessChances = 10;
+    var djName = ["avicii", "armin", "martin", "alan", "zedd", "david"];
+    var wins = 0;
+    var losses = 0;
+    var guessLetter = [];
+    var screenArray = [];
+    var wrongLetter = [" "];
+
+    var log = function() {
+        document.getElementById("guess-chances").textContent =  "You have " + guessChances + " chances left.";
+        document.getElementById("wins").textContent = "You win " + wins + " times.";
+        document.getElementById("losses").textContent = "You loss " + losses + "times.";
+    }
+
+    var resetGame = function() {
+        guessChances = 10;
+        wrongLetter = [" "];
+        log();
+    }
+
+    var computerPick = djName [(Math.floor(Math.random() * djName.length))];
+    
+    var charNumber = computerPick.length;
+
+    guessLetter = computerPick.split("");
+
+    for (var i=0; i < charNumber; i++) {
+        screenArray[i]="_"
+        document.getElementById("dj-name").innerHTML = screenArray.join(" ");
+    }
+    
+    log();
+
+    document.onkeyup = function (event) {
+
+        var userGuess = event.key.toLocaleLowerCase();
+        
+
+
+        if (guessChances >0) {
+
+            guessChances--;
+            
+            if ((userGuess==="a")||(userGuess==="b")||(userGuess==="c")||(userGuess==="d")||(userGuess==="e")||(userGuess==="f")||(userGuess==="g")||(userGuess==="h")||(userGuess==="i")||(userGuess==="j")||(userGuess==="k")||(userGuess==="l")||(userGuess==="m")||(userGuess==="n")||(userGuess==="o")||(userGuess==="p")||(userGuess==="q")||(userGuess==="r")||(userGuess==="s")||(userGuess==="t")||(userGuess==="u")||(userGuess==="v")||(userGuess==="w")||(userGuess==="x")||(userGuess==="y")||(userGuess==="z")) {
+
+                for (var j=0; j < charNumber; j++) {
+
+                    if (userGuess === guessLetter[j]) {
+                        charNumber --;
+                        console.log (charNumber);
+                        screenArray[j] = userGuess; 
+                        document.getElementById("dj-name").innerHTML = screenArray.join(" ");
+                    }
+
+                }
+
+                if (charNumber--) {
+
+                    for (var k=0; k < wrongLetter.length; k++) {
+
+                    if (userGuess !== wrongLetter[k]) {
+                        wrongLetter.push(userGuess);
+                        document.getElementById("player-guess").innerHTML = "You guessed: "+ wrongLetter.join(" ");
+                    }
+
+                    }
+
+                }
+
+
+
+                if (charNumber = 0) {wins++};
+
+            }
+            
+            else {
+                alert("Please press letter key!");
+            }
+
+
+        }
+
+        else {
+
+            if (losses < 2) {
+                losses ++;
+                resetGame();
+            }
+
+            else {
+                alert ("Game Over!");
+            }
+
+        }
+
+    }
+    
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
