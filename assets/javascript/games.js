@@ -2,18 +2,23 @@ var djName = ["avicii", "armin", "martin", "alan", "zedd", "david"];
 var guessChances = 10;
 var wins = 0;
 var losses = 0;
-var computerPickLetter = [];
 var screenArray = [];
+var computerPickLetter = [];
 var wrongLetter = [];
 var ifGenerate = true;
 
 var generateRandomNumber = function () {
+    wrongLetter = [];
+    screenArray = [];
+    computerPickLetter = [];
     var computerPick = djName [(Math.floor(Math.random() * djName.length))];
     computerPickLetter = computerPick.split("");
     for (var i=0; i < computerPickLetter.length; i++) {
-    screenArray[i]="_";
-    document.getElementById("dj-name").innerHTML = screenArray.join(" ");
+        screenArray[i]="_";
+        document.getElementById("dj-name").innerHTML = screenArray.join(" ");
     }
+    document.getElementById("player-guess").innerHTML = wrongLetter.join(" ");
+    log();
 }
 
 var log = function() {
@@ -25,10 +30,9 @@ var log = function() {
 var resetGame = function() {
     guessChances = 10;
     wrongLetter = [];
+    document.getElementById("player-guess").innerHTML = wrongLetter.join(" ");
     log();
 }
-
-log();
 
 generateRandomNumber();
 
@@ -61,7 +65,17 @@ document.onkeyup = function (event) {
             }
 
             if (screenArray.indexOf("_") === -1) {
+
+                console.log(screenArray.join(""));
+
+                if (screenArray.join("") === "Alan") {document.getElementById("upload-image").src = "assets/images/Alan.jpeg";}
+                if (screenArray.join("") === "Avicii") {document.getElementById("upload-image").src = "assets/images/Avicii.jpeg";}
+                if (screenArray.join("") === "Armin") {document.getElementById("upload-image").src = "assets/images/Armin.jpeg";}
+                if (screenArray.join("") === "David") {document.getElementById("upload-image").src = "assets/images/David.jpeg";}
+                if (screenArray.join("") === "Zedd") {document.getElementById("upload-image").src = "assets/images/Zedd.jpeg";}
+
                 wins ++;
+
                 generateRandomNumber();
             }
             

@@ -5,13 +5,13 @@ body {
     font-size: 1.2em;
 }
 
-.jumbotron {
+h1 , p {
     text-align: center;
-    background: transparent;
 }
 
 div.col-sm-12 {
     text-align: left;
+    background: transparent;
 }
 
 #dj-name, #player-guess {
