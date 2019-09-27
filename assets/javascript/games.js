@@ -68,11 +68,22 @@ document.onkeyup = function (event) {
 
                 console.log(screenArray.join(""));
 
-                if (screenArray.join("") === "Alan") {document.getElementById("upload-image").src = "assets/images/Alan.jpeg";}
-                if (screenArray.join("") === "Avicii") {document.getElementById("upload-image").src = "assets/images/Avicii.jpeg";}
-                if (screenArray.join("") === "Armin") {document.getElementById("upload-image").src = "assets/images/Armin.jpeg";}
-                if (screenArray.join("") === "David") {document.getElementById("upload-image").src = "assets/images/David.jpeg";}
-                if (screenArray.join("") === "Zedd") {document.getElementById("upload-image").src = "assets/images/Zedd.jpeg";}
+                // if ("alan" === "Alan")
+                if (screenArray.join("") === "alan") {
+                    document.getElementById("upload-image").src = "assets/images/Alan.jpg";
+                }
+                if (screenArray.join("") === "avicii") {
+                    document.getElementById("upload-image").src = "assets/images/Avicii.jpg";
+                }
+                if (screenArray.join("") === "armin") {
+                    document.getElementById("upload-image").src = "assets/images/Armin.jpg";
+                }
+                if (screenArray.join("") === "david") {
+                    document.getElementById("upload-image").src = "assets/images/David.jpg";
+                }
+                if (screenArray.join("") === "zedd") {
+                    document.getElementById("upload-image").src = "assets/images/Zedd.jpg";
+                }
 
                 wins ++;
 
