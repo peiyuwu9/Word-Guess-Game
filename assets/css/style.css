@@ -1,0 +1,13 @@
+body {
+    background: url('assets/iamge/background.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Merienda', cursive;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+div.col-sm-12 {
+    text-align: left;
+}
