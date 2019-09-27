@@ -16,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="col-sm-12">
                         <h1 class="display-8">Word Guess Game</h1>
-                        <p class="lead">We are going to guess name of <b>DJs</b>.</p>
+                        <p class="lead">Words are all names of popular <b>DJs</b>.</p>
                         <hr>
                 </div>
             </div>
@@ -28,21 +28,26 @@
                     <div class="col-sm-12" id="losses"></div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="col-sm-12" id="instruction">Please press any letter to start the game.</div>
+                    <div class="col-sm-12" id="instruction">Please press any letter on keyboard to start the game.</div>
                     <div class="col-sm-12" id="dj-name"></div>
                 </div> 
             </div>
             <p></p>
             <div class="row justify-content-center">
                 <div class="col-sm-4">
-                    <div class="col-sm-12">Your guessed below letter already:</div>
+                    <div class="col-sm-12">You have guessed below letters:</div>
                     <div class="col-sm-12" id="player-guess"></div>
                 </div>
                 <div class="col-sm-4">
-                    <img id="upload-image" class="rounded mx-auto d-block" src="assets/images/Martin.jpeg">
+                    <div id="image-instruction">Guess the word right to meet with DJs! Also ENJOY their musics!</div>
+                    <img id="upload-image" class="rounded mx-auto d-block" alt="" src="assets/images/Martin.jpg">
                 </div>
             </div>
     </div>
+
+    <audio id="backgound-music">
+        <source src = "" type = "audio/mpeg">
+    </audio>
     
     <script type="text/javascript" src="assets/javascript/games.js"></script>
 
