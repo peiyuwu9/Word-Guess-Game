@@ -1,4 +1,5 @@
 var djName = ["avicii", "armin", "martin", "alesso", "zedd", "david"];
+var djNameCount = 0;
 var guessChances = 10;
 var wins = 0;
 var losses = 0;
@@ -11,7 +12,7 @@ var generateRandomNumber = function () {
     wrongLetter = [];
     screenArray = [];
     computerPickLetter = [];
-    var computerPick = djName [(Math.floor(Math.random() * djName.length))];
+    var computerPick = djName[djNameCount];
     computerPickLetter = computerPick.split("");
     for (var i=0; i < computerPickLetter.length; i++) {
         screenArray[i]="_";
@@ -19,6 +20,11 @@ var generateRandomNumber = function () {
     }
     document.getElementById("player-guess").innerHTML = wrongLetter.join(" ");
     log();
+    djNameCount++;
+    if (djNameCount=6) {
+        djNameCount = 0;
+        djName.sort(function(a, b){return 0.5 - Math.random()});
+    }
 }
 
 var log = function() {
@@ -49,8 +55,9 @@ document.onkeyup = function (event) {
 
             guessChances--;
             console.log(guessChances);
+            console.log(event.which);
 
-            if ((userGuess==="a")||(userGuess==="b")||(userGuess==="c")||(userGuess==="d")||(userGuess==="e")||(userGuess==="f")||(userGuess==="g")||(userGuess==="h")||(userGuess==="i")||(userGuess==="j")||(userGuess==="k")||(userGuess==="l")||(userGuess==="m")||(userGuess==="n")||(userGuess==="o")||(userGuess==="p")||(userGuess==="q")||(userGuess==="r")||(userGuess==="s")||(userGuess==="t")||(userGuess==="u")||(userGuess==="v")||(userGuess==="w")||(userGuess==="x")||(userGuess==="y")||(userGuess==="z")) {
+            if (event.which>64 && event.which<91) {
 
                 for (var j=0; j < computerPickLetter.length; j++) {
                     if (userGuess === computerPickLetter[j]) {
@@ -74,30 +81,35 @@ document.onkeyup = function (event) {
 
                     // if ("alan" === "Alan")
                     if (screenArray.join("") === "alesso") {
+                        document.getElementById("dj-print").innerHTML="<b>Alesso - If I Lose Myself</b>";
                         document.getElementById("upload-image").style.visibility = "visible";
                         document.getElementById("upload-image").src = "assets/images/Alesso.jpg";
                         document.getElementById("backgound-music").src = "assets/sound/Alesso feat. OneRepublic - If I Lose Myself.mp3";
                         document.getElementById("backgound-music").play();
                     }
                     if (screenArray.join("") === "avicii") {
+                        document.getElementById("dj-print").innerHTML="<b>Avicii - Waiting For Love</b>";
                         document.getElementById("upload-image").style.visibility = "visible";
                         document.getElementById("upload-image").src = "assets/images/Avicii.jpg";
                         document.getElementById("backgound-music").src = "assets/sound/Avicii - Waiting For Love.mp3";
                         document.getElementById("backgound-music").play();
                     }
                     if (screenArray.join("") === "armin") {
+                        document.getElementById("dj-print").innerHTML="<b>Armin - Turn It Up</b>";
                         document.getElementById("upload-image").style.visibility = "visible";
                         document.getElementById("upload-image").src = "assets/images/Armin.jpg";
                         document.getElementById("backgound-music").src = "assets/sound/Armin van Buuren - Turn It Up.mp3";
                         document.getElementById("backgound-music").play();
                     }
                     if (screenArray.join("") === "david") {
+                        document.getElementById("dj-print").innerHTML="<b>David - Titanium</b>";
                         document.getElementById("upload-image").style.visibility = "visible";
                         document.getElementById("upload-image").src = "assets/images/David.jpg";
                         document.getElementById("backgound-music").src = "assets/sound/David Guetta feat. Sia - Titanium.mp3";
                         document.getElementById("backgound-music").play();
                     }
                     if (screenArray.join("") === "zedd") {
+                        document.getElementById("dj-print").innerHTML="<b>Zedd - Beautiful Now</b>";
                         document.getElementById("upload-image").style.visibility = "visible";
                         document.getElementById("upload-image").src = "assets/images/Zedd.jpg";
                         document.getElementById("backgound-music").src = "assets/sound/Zedd feat. Jon Bellion - Beautiful Now [Grey Remix].mp3";
@@ -105,6 +117,7 @@ document.onkeyup = function (event) {
                     }
 
                     if (screenArray.join("") === "martin") {
+                        document.getElementById("dj-print").innerHTML="<b>Martin - High On Life</b>";
                         document.getElementById("upload-image").style.visibility = "visible";
                         document.getElementById("upload-image").src = "assets/images/Martin.jpg";
                         document.getElementById("backgound-music").src = "assets/sound/Martin Garrix feat. Bonn - High On Life.mp3";
@@ -134,6 +147,13 @@ document.onkeyup = function (event) {
 
         else {
             alert ("Game Over!");
+            wins = 0;
+            losses = 0;
+            resetGame();
+            generateRandomNumber();
+            document.getElementById("upload-image").style.visibility = "hidden";
+            document.getElementById("backgound-music").pause();
+            
         }
 
     }
