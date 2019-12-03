@@ -1,28 +1,21 @@
-# Word-Guess-Game
+# Word Guess Game
+Create a DJ name guess game website thate will run in browser and feature dynamically updated HTML and CSS powered by JavaScript code.
 
-Pseudocode:
+## Motivation
+Create a web page to practice HTML, CSS and JavaScript.
 
-1. Computer picks a random word picked from an array and breakdown into letters. 
+## Technologies used and why
+**HTML** is used as backbone of the content.  
+**CSS** is used to modify the layout.  
+**JavaScript** is used to dynamically updated HTML and CSS.
 
-2. Browser saves computer's letter in a new array. However, showing "_" on screen for all letters untill player guesses letters right.
+## How to use
+1. Guess any letter by clicking keyboard.
 
-3. 
+2. You have 10 chances to guess the letter picked by computer each round.
 
-i. Player presses any key to enter a letter.
-    * Add a alert if player doesn't press letter key.
+3. If you guess right letter, the letter will be populated in the word; otherwise your letter will be shown on guessed section.
 
-ii. Brower takes away 1 guess chance from player.
+4. Once you loss 3 times. Game is over and restarts.
 
-iii. Browser saves player's letter in variables.
-
-iv. Computer prints what player keys.
-
-v. Browsers compares player's and computer's letter.
-
-vi. If letters match, screen pops which letter is matching
-
-vii. If all letters are matching, pop congrdulation and go into next round,
-
-viii. If guess is down to 0, loss increase 1.
-
-4. As soon as loss hits 3, game is over
+5. However, you guess DJ name right, A DJ's profile and song will be delivered in browser.
